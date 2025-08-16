@@ -1,473 +1,340 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Details Form</title>
-  </head>
-  <body>
-    <section class="hero is-primary is-bold">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">Trip Details Form</h1>
-        </div>
-      </div>
-    </section>
-    <form id="form" class="container m-4 pl-4">
-      <div class="field">
-        <label class="label">Order Date</label>
-        <div class="control">
-          <input
-            class="input"
-            type="date"
-            placeholder="Order Date"
-            name="Order Date"
-            required
-          />
-        </div>
-      </div>
-      
-      <div class="field">
-        <label class="label">Trip Rate</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Amount"
-            name="Trip Rate"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Material</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Material"
-            name="Material"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Tonnage</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Tonnage"
-            name="Tonnage"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">From</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Place"
-            name="From"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">To</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Place"
-            name="To"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">State</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="State"
-            name="State"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Kms</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Kms"
-            name="Kms"
-            required
-          />
-        </div>
-      </div>
-    
-
-      <div class="field">
-        <label class="label">Diesel</label>
-        <div class="control">
-          <textarea
-            class="input"
-            placeholder="Amount"
-            name="Diesel"
-          ></textarea>
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Toll Amount</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Amount"
-            name="Toll Amount"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Advance amt</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Amount"
-            name="Advance Amount"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Loading Charges</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Amount"
-            name="Loading Charges"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Unloading Charges</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Amount"
-            name="Unloading Charges"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Other Charges</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Amount"
-            name="Other Charges"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Transport</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Transport"
-            name="Transport"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Transporter Name</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Transporter Name"
-            name="Transporter Name"
-            required
-          />
-        </div>
-      </div>
-
-      
-      <div class="field">
-        <label class="label">App</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Application used"
-            name="App"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Unloading Date</label>
-        <div class="control">
-          <input
-            class="input"
-            type="date"
-            placeholder="Unloading Date"
-            name="Unloading Date"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Courier Name</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Courier Name"
-            name="Courier Name"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Courierd Date</label>
-        <div class="control">
-          <input
-            class="input"
-            type="date"
-            placeholder="Courierd Date"
-            name="Courierd Date"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Courier Reached Date</label>
-        <div class="control">
-          <input
-            class="input"
-            type="date"
-            placeholder="Courier Reached Date"
-            name="Courier Reached Date"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Balance Amt</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Balance Amount"
-            name="Balance Amt"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Tracking Number</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Tracking Number"
-            name="Tracking Number"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Payment Status</label>
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="Received/Not" value="Received" /> Received
-          </label>
-          <label class="radio">
-            <input type="radio" name="Received/Not" value="Not Received " /> Not Received
-          </label>
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Driver Name</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Driver Name"
-            name="Driver Name"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Vehicle Number</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Eg.TN 69 VJ 0000"
-            name="Vechicle No"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">FeedBack</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Remarks"
-            name="Feedback"
-            required
-          />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Color Code</label>
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="Color" value="Green" /> Green
-          </label>
-          <label class="radio">
-            <input type="radio" name="Color" value="Yellow" />Yellow
-          </label>
-          <label class="radio">
-            <input type="radio" name="Color" value="Red" />Red
-          </label>
-        </div>
-      </div>
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-primary" type="submit" id="submit-button">
-            Submit
-          </button>
-        </div>
-        <div class="control">
-          <button
-            class="button is-danger"
-            type="button"
-            onclick="document.getElementById('form').reset();"
-          >
-            Cancel
-          </button>
-        </div>
-      </div>
-    </form>
-
-    <div
-      id="message"
-      style="
-        display: none;
-        margin: 20px;
-        padding: 10px;
-        border-radius: 4px;
-        font-weight: bold;
-      "
-    ></div>
-
-    <script>
-      const form = document.getElementById("form");
-      const submitButton = document.getElementById("submit-button");
-      const messageDiv = document.getElementById("message");
-
-      const scriptURL =
-        "https://script.google.com/macros/s/AKfycbxKeXIKVaBm-SwMj-o9ju4B42JUdyJlmA_1I_MCYlCRMPs0E_4o4bad8DzDeyeGXzaA_Q/exec";
-
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-
-        messageDiv.textContent = "Submitting...";
-        messageDiv.style.display = "block";
-        messageDiv.style.backgroundColor = "beige";
-        messageDiv.style.color = "black";
-        submitButton.disabled = true;
-        submitButton.classList.add("is-loading");
-
-        try {
-          const formData = new FormData(this);
-          const formDataObj = {};
-
-          for (let [key, value] of formData.entries()) {
-            if (formDataObj.hasOwnProperty(key)) {
-              if (!Array.isArray(formDataObj[key])) {
-                formDataObj[key] = [formDataObj[key]];
-              }
-              formDataObj[key].push(value);
-            } else {
-              formDataObj[key] = value;
-            }
-          }
-
-          const response = await fetch(scriptURL, {
-            redirect: "follow",
-            method: "POST",
-            body: JSON.stringify(formDataObj),
-            headers: {
-              "Content-Type": "text/plain;charset=utf-8",
-            },
-          });
-
-          const data = await response.json();
-
-          if (data.status === "success") {
-            messageDiv.textContent = data.message || "Data submitted successfully!";
-            messageDiv.style.backgroundColor = "#48c78e";
-            messageDiv.style.color = "white";
-            form.reset();
-          } else {
-            throw new Error(data.message || "Submission failed");
-          }
-        } catch (error) {
-          console.error("Error:", error);
-          messageDiv.textContent = "Error: " + error.message;
-          messageDiv.style.backgroundColor = "#f14668";
-          messageDiv.style.color = "white";
-        } finally {
-          submitButton.disabled = false;
-          submitButton.classList.remove("is-loading");
-
-          setTimeout(() => {
-            messageDiv.textContent = "";
-            messageDiv.style.display = "none";
-          }, 4000);
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a clean, modern font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
         }
-      });
+    </style>
+</head>
+<body class="bg-gray-100 antialiased">
+    <div class="min-h-screen flex flex-col items-center">
+        <!-- Hero Section -->
+        <header class="bg-blue-600 text-white w-full shadow-md py-4 mb-8">
+            <div class="container mx-auto px-4 flex justify-between items-center">
+                <h1 class="text-3xl font-bold">Trip Details Form</h1>
+                <button id="logout-btn" class="bg-white text-blue-600 hover:bg-gray-100 font-semibold py-2 px-4 rounded-lg shadow transition-colors">
+                    Log Out
+                </button>
+            </div>
+        </header>
 
-      const cancelButton = form.querySelector("button.is-danger");
-      cancelButton.addEventListener("click", function () {
-        form.reset();
-        messageDiv.style.display = "none";
-        messageDiv.textContent = "";
-      });
+        <!-- Main Form Container -->
+        <div class="w-full max-w-2xl bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-8">
+            <div id="message" class="text-sm p-3 rounded-lg text-center mb-4 hidden"></div>
+            <form id="form" class="space-y-6">
+                <!-- Order Date -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Order Date</label>
+                    <input type="date" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" name="Order Date" required />
+                </div>
+                <!-- Trip Rate -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Trip Rate</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Amount" name="Trip Rate" required />
+                </div>
+                <!-- Material -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Material</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Material" name="Material" required />
+                </div>
+                <!-- Tonnage -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Tonnage</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Tonnage" name="Tonnage" required />
+                </div>
+                <!-- From -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">From</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Place" name="From" required />
+                </div>
+                <!-- To -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">To</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Place" name="To" required />
+                </div>
+                <!-- State -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">State</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="State" name="State" required />
+                </div>
+                <!-- Kms -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Kms</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Kms" name="Kms" required />
+                </div>
+                <!-- Diesel -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Diesel</label>
+                    <textarea class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Amount" name="Diesel"></textarea>
+                </div>
+                <!-- Toll Amount -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Toll Amount</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Amount" name="Toll Amount" required />
+                </div>
+                <!-- Advance Amount -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Advance Amt</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Amount" name="Advance Amount" required />
+                </div>
+                <!-- Loading Charges -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Loading Charges</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Amount" name="Loading Charges" required />
+                </div>
+                <!-- Unloading Charges -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Unloading Charges</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Amount" name="Unloading Charges" required />
+                </div>
+                <!-- Other Charges -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Other Charges</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Amount" name="Other Charges" required />
+                </div>
+                <!-- Transport -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Transport</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Transport" name="Transport" required />
+                </div>
+                <!-- Transporter Name -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Transporter Name</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Transporter Name" name="Transporter Name" required />
+                </div>
+                <!-- App -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">App</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Application used" name="App" required />
+                </div>
+                <!-- Unloading Date -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Unloading Date</label>
+                    <input type="date" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Unloading Date" name="Unloading Date" required />
+                </div>
+                <!-- Courier Name -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Courier Name</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Courier Name" name="Courier Name" required />
+                </div>
+                <!-- Courierd Date -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Courierd Date</label>
+                    <input type="date" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Courierd Date" name="Courierd Date" required />
+                </div>
+                <!-- Courier Reached Date -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Courier Reached Date</label>
+                    <input type="date" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Courier Reached Date" name="Courier Reached Date" required />
+                </div>
+                <!-- Balance Amt -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Balance Amt</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Balance Amount" name="Balance Amt" required />
+                </div>
+                <!-- Tracking Number -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Tracking Number</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Tracking Number" name="Tracking Number" required />
+                </div>
+                <!-- Payment Status -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Payment Status</label>
+                    <div class="mt-1 flex items-center space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Received/Not" value="Received" class="form-radio h-4 w-4 text-blue-600" checked />
+                            <span class="ml-2 text-gray-700">Received</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Received/Not" value="Not Received " class="form-radio h-4 w-4 text-blue-600" />
+                            <span class="ml-2 text-gray-700">Not Received</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Driver Name -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Driver Name</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Driver Name" name="Driver Name" required />
+                </div>
+                <!-- Vehicle Number -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Vehicle Number</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Eg.TN 69 VJ 0000" name="Vechicle No" required />
+                </div>
+                <!-- Feedback -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">FeedBack</label>
+                    <input type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Remarks" name="Feedback" required />
+                </div>
+                <!-- Color Code -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Color Code</label>
+                    <div class="mt-1 flex items-center space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Color" value="Green" class="form-radio h-4 w-4 text-green-500" checked />
+                            <span class="ml-2 text-gray-700">Green</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Color" value="Yellow" class="form-radio h-4 w-4 text-yellow-500" />
+                            <span class="ml-2 text-gray-700">Yellow</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Color" value="Red" class="form-radio h-4 w-4 text-red-500" />
+                            <span class="ml-2 text-gray-700">Red</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Form Actions -->
+                <div class="flex space-x-4 justify-end">
+                    <button id="submit-button" type="submit" class="w-1/2 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Submit
+                    </button>
+                    <button type="button" onclick="document.getElementById('form').reset();" class="w-1/2 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+            <div id="message-bottom" class="text-sm p-3 rounded-lg text-center mb-4 hidden"></div>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signOut, onAuthStateChanged, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- Firebase Configuration ---
+        const firebaseConfig = {
+  apiKey: "AIzaSyAMrS94RGhyc8dbpgNRqhuCRMmX7hHyW9w",
+  authDomain: "truck-details-82ad0.firebaseapp.com",
+  projectId: "truck-details-82ad0",
+  storageBucket: "truck-details-82ad0.firebasestorage.app",
+  messagingSenderId: "473775704890",
+  appId: "1:473775704890:web:dd2c96516d85b19f95de03"
+};
+        // --- Global Variables ---
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        // --- Firebase Initialization ---
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        // Sign in with the provided custom token or anonymously
+        if (initialAuthToken) {
+            signInWithCustomToken(auth, initialAuthToken).catch(console.error);
+        } else {
+            signInAnonymously(auth).catch(console.error);
+        }
+
+        // --- UI Element References ---
+        const form = document.getElementById('form');
+        const messageDiv = document.getElementById('message');
+        const messageBottomDiv = document.getElementById('message-bottom');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        // URL of your deployed Google Apps Script
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxKeXIKVaBm-SwMj-o9ju4B42JUdyJlmA_1I_MCYlCRMPs0E_4o4bad8DzDeyeGXzaA_Q/exec"; 
+
+        // --- Helper Functions ---
+        function showMessage(text, className) {
+            messageDiv.textContent = text;
+            messageDiv.className = `text-sm p-3 rounded-lg text-center mb-4 ${className}`;
+            messageDiv.style.display = 'block';
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showBottomMessage(text, className) {
+            messageBottomDiv.textContent = text;
+            messageBottomDiv.className = `text-sm p-3 rounded-lg text-center mb-4 ${className}`;
+            messageBottomDiv.style.display = 'block';
+            setTimeout(() => {
+                messageBottomDiv.style.display = 'none';
+            }, 5000);
+        }
+
+
+        // --- Authentication Check ---
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const userDocRef = doc(db, `users/${user.uid}`);
+                const docSnap = await getDoc(userDocRef);
+                if (docSnap.exists() && docSnap.data().role === 'admin') {
+                    // Show the form for admin users
+                    form.style.display = 'block';
+                } else {
+                    // Redirect non-admin users
+                    await signOut(auth); // Sign out any non-admin user
+                    window.location.href = 'login.html';
+                }
+            } else {
+                // Redirect if not logged in
+                window.location.href = 'login.html';
+            }
+        });
+
+        // --- Event Listeners ---
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Collect form data
+            const formData = new FormData(form);
+            const data = {};
+            for (const [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+
+            // Show a submitting message
+            showBottomMessage('Submitting...', 'bg-blue-100 text-blue-700');
+
+            try {
+                const response = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain', // Use text/plain to avoid CORS issues with Apps Script
+                    },
+                    body: JSON.stringify(data),
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showBottomMessage(result.message, 'bg-green-100 text-green-700');
+                    form.reset(); // Reset the form on successful submission
+                } else {
+                    showMessage(`Error: ${result.message}`, 'bg-red-100 text-red-700');
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showMessage('An error occurred. Please try again.', 'bg-red-100 text-red-700');
+            }
+        });
+
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                window.location.href = 'login.html';
+            } catch (error) {
+                console.error("Logout failed:", error);
+                showMessage(`Logout failed: ${error.message}`, 'bg-red-100 text-red-700');
+            }
+        });
     </script>
-  </body>
+</body>
 </html>
+
+
+
+       
