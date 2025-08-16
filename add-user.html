@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New User</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 antialiased">
+    <div class="container p-4">
+        <div class="w-full max-w-sm bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Add New User</h1>
+            <div id="message" class="text-sm p-3 rounded-lg text-center mb-4 hidden"></div>
+            <div class="space-y-4">
+                <div>
+                    <label for="new-user-email" class="block text-sm font-medium text-gray-700">Email address</label>
+                    <input type="email" id="new-user-email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="new-user-password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="new-user-password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <button id="add-user-btn" class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                    Create User
+                </button>
+                <a href="login.html" class="w-full py-2 px-4 text-center block border border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                    Back to Login
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- Firebase Configuration ---
+        const firebaseConfig = {
+  apiKey: "AIzaSyAMrS94RGhyc8dbpgNRqhuCRMmX7hHyW9w",
+  authDomain: "truck-details-82ad0.firebaseapp.com",
+  projectId: "truck-details-82ad0",
+  storageBucket: "truck-details-82ad0.firebasestorage.app",
+  messagingSenderId: "473775704890",
+  appId: "1:473775704890:web:dd2c96516d85b19f95de03"
+};
+        
+        // --- Global Variables ---
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // --- Firebase Initialization ---
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        // Sign in with the provided custom token or anonymously
+        if (initialAuthToken) {
+            signInWithCustomToken(auth, initialAuthToken).catch(console.error);
+        } else {
+            signInAnonymously(auth).catch(console.error);
+        }
+
+        const newUserEmailInput = document.getElementById('new-user-email');
+        const newUserPasswordInput = document.getElementById('new-user-password');
+        const addUserBtn = document.getElementById('add-user-btn');
+        const messageDiv = document.getElementById('message');
+
+        function showMessage(text, className) {
+            messageDiv.textContent = text;
+            messageDiv.className = `text-sm p-3 rounded-lg text-center mb-4 ${className}`;
+            messageDiv.style.display = 'block';
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        addUserBtn.addEventListener('click', async () => {
+            const email = newUserEmailInput.value;
+            const password = newUserPasswordInput.value;
+            if (!email || !password) {
+                showMessage('Please enter both email and password.', 'bg-yellow-100 text-yellow-700');
+                return;
+            }
+
+            try {
+                // Create a new user with email and password
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                // Add the user to Firestore with a 'user' role
+                const userDocRef = doc(db, `users/${user.uid}`);
+                await setDoc(userDocRef, { role: 'user', email: user.email });
+                showMessage('User created successfully!', 'bg-green-100 text-green-700');
+                newUserEmailInput.value = '';
+                newUserPasswordInput.value = '';
+            } catch (error) {
+                console.error("Error creating new user:", error);
+                showMessage(`Error creating user: ${error.message}`, 'bg-red-100 text-red-700');
+            }
+        });
+    </script>
+</body>
+</html>

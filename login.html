@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Auth with Roles</title>
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a clean, modern font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 antialiased">
+
+    <!-- Main container for the entire application -->
+    <div class="container p-4">
+
+        <!-- The main card for the application UI -->
+        <div class="w-full max-w-sm bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+
+            <!-- Title of the application -->
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Login & Roles</h1>
+
+            <!-- Message area for displaying success or error messages -->
+            <div id="message" class="text-sm p-3 rounded-lg text-center mb-4 hidden"></div>
+
+            <!-- Loading spinner to indicate ongoing operations -->
+            <div id="loading-spinner" class="hidden flex justify-center py-4">
+                <div class="w-8 h-8 rounded-full border-4 border-t-4 border-gray-200 border-t-blue-500 animate-spin"></div>
+            </div>
+            
+            <!-- Login and Sign-up Form -->
+            <div id="auth-form" class="space-y-4">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                    <input type="email" id="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <!-- The "User Log In" button will now simply show a message instead of redirecting -->
+                    <button id="user-login-btn" class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        User Log In
+                    </button>
+                    <!-- The "Admin Log In" button redirects to index.html if the user is an admin -->
+                    <button id="admin-login-btn" class="w-full py-2 px-4 border border-blue-600 rounded-md shadow-sm text-sm font-medium text-blue-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Admin Log In
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <a href="add-user.html" class="w-full py-2 px-4 text-center border border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                        Add New User
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        // Import Firebase modules from the CDN.
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- Firebase Configuration ---
+       const firebaseConfig = {
+  apiKey: "AIzaSyAMrS94RGhyc8dbpgNRqhuCRMmX7hHyW9w",
+  authDomain: "truck-details-82ad0.firebaseapp.com",
+  projectId: "truck-details-82ad0",
+  storageBucket: "truck-details-82ad0.firebasestorage.app",
+  messagingSenderId: "473775704890",
+  appId: "1:473775704890:web:dd2c96516d85b19f95de03"
+};
+      
+        // --- Global Variables ---
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        // --- Firebase Initialization ---
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        // Sign in with the provided custom token or anonymously
+        if (initialAuthToken) {
+            signInWithCustomToken(auth, initialAuthToken).catch(console.error);
+        } else {
+            signInAnonymously(auth).catch(console.error);
+        }
+
+        // --- UI Element References ---
+        const authForm = document.getElementById('auth-form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const userLoginBtn = document.getElementById('user-login-btn');
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+        const messageDiv = document.getElementById('message');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+
+        // --- Helper Functions ---
+        function showMessage(text, className) {
+            messageDiv.textContent = text;
+            messageDiv.className = `text-sm p-3 rounded-lg text-center mb-4 ${className}`;
+            messageDiv.style.display = 'block';
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showLoading(show) {
+            loadingSpinner.style.display = show ? 'flex' : 'none';
+            authForm.style.display = show ? 'none' : 'block';
+        }
+
+        // --- Event Handlers ---
+        userLoginBtn.addEventListener('click', async () => {
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            if (!email || !password) {
+                showMessage('Please enter email and password.', 'bg-yellow-100 text-yellow-700');
+                return;
+            }
+            showLoading(true);
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                showMessage('Login successful! Welcome user!', 'bg-green-100 text-green-700');
+            } catch (error) {
+                console.error("Login failed:", error);
+                showMessage(`Login failed: ${error.message}`, 'bg-red-100 text-red-700');
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        adminLoginBtn.addEventListener('click', async () => {
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            if (!email || !password) {
+                showMessage('Please enter email and password.', 'bg-yellow-100 text-yellow-700');
+                return;
+            }
+            showLoading(true);
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Check the user's role in Firestore
+                const userDocRef = doc(db, `users/${user.uid}`);
+                const docSnap = await getDoc(userDocRef);
+
+                if (docSnap.exists() && docSnap.data().role === 'admin') {
+                    // Redirect to the admin-only page
+                    window.location.href = 'index.html';
+                } else {
+                    // If not an admin, sign out immediately and show an error
+                    await signOut(auth);
+                    showMessage('Login failed. Only admins can use this button.', 'bg-red-100 text-red-700');
+                }
+            } catch (error) {
+                console.error("Admin login failed:", error);
+                showMessage(`Login failed: ${error.message}`, 'bg-red-100 text-red-700');
+            } finally {
+                showLoading(false);
+            }
+        });
+    </script>
+</body>
+</html>
